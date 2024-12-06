@@ -15,7 +15,6 @@ st.header('Lanzar una moneda')
 chart = st.line_chart([0.5])
 
 def toss_coin(n):
-
     trial_outcomes = scipy.stats.bernoulli.rvs(p=0.5, size=n)
 
     mean = None
@@ -23,7 +22,7 @@ def toss_coin(n):
     outcome_1_count = 0
 
     for r in trial_outcomes:
-        outcome_no +=1
+        outcome_no += 1
         if r == 1:
             outcome_1_count += 1
         mean = outcome_1_count / outcome_no
@@ -46,8 +45,6 @@ if start_button:
                             mean]],
                      columns=['no', 'iterations', 'mean'])
         ],
-        axis=0)
-    st.session_state['df_experiment_results'] = 
-        st.session_state['df_experiment_results'].reset_index(drop=True)
+        axis=0).reset_index(drop=True)  # Este método se aplica en la misma línea
 
 st.write(st.session_state['df_experiment_results'])
